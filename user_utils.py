@@ -1,17 +1,12 @@
-#Pinecone team has been making a lot of changes to there code and here is how it should be used going forward :)
 from pinecone import Pinecone as PineconeClient
-#from langchain.vectorstores import Pinecone     #This import has been replaced by the below one :)
 from langchain_community.vectorstores import Pinecone
 from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddings
-#from langchain.llms import OpenAI #This import has been replaced by the below one :)
 from langchain_openai import OpenAI
 from langchain.chains.question_answering import load_qa_chain
-#from langchain.callbacks import get_openai_callback #This import has been replaced by the below one :)
 from langchain_community.callbacks import get_openai_callback
 import joblib
 
 
-#Function to pull index data from Pinecone...
 def pull_from_pinecone(pinecone_apikey,pinecone_environment,pinecone_index_name,embeddings):
 
     PineconeClient(
@@ -28,7 +23,6 @@ def create_embeddings():
     embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
     return embeddings
 
-#This function will help us in fetching the top relevent documents from our vector store - Pinecone Index
 def get_similar_docs(index,query,k=2):
 
     similar_docs = index.similarity_search(query, k=k)
