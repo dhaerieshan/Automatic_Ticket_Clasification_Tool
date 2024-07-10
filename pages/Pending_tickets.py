@@ -2,11 +2,9 @@ import streamlit as st
  
 st.title('Departments')
  
-# Create tabs
 tab_titles = ['HR Support', 'IT Support', 'Transportation Support']
 tabs = st.tabs(tab_titles)
  
-# Add content to each tab...
 with tabs[0]:
     st.header('HR Support tickets')
     for ticket in st.session_state['HR_tickets']:
